@@ -18,7 +18,7 @@ public class RoadDensity {
     
     public static final String TABLE = "road_density";     
     public static final String COL_STNAME = "StName";
-    public static final String COL_TRAFFICREPORTS = "TrafficReports";
+    public static final String COL_HIGHTRAFFICREPORTS = "TrafficReports";
 
     @Override
     public String toString() {

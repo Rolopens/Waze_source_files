@@ -71,7 +71,7 @@ public class RoadDensityService {
         RoadDensity RoadDensity = new RoadDensity();
 
 	RoadDensity.setStName(rs.getString(RoadDensity.COL_STNAME));
-	RoadDensity.setTrafficReports(rs.getInt(RoadDensity.COL_TRAFFICREPORTS));
+	RoadDensity.setTrafficReports(rs.getInt(RoadDensity.COL_HIGHTRAFFICREPORTS));
         
 	return RoadDensity;
     }
