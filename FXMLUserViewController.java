@@ -31,6 +31,7 @@ import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -71,6 +72,9 @@ public class FXMLUserViewController implements Initializable {
     
     @FXML ImageView usericon;
     @FXML ImageView updateDetailsAvatar;
+    
+    @FXML private ChoiceBox location;
+    @FXML private ChoiceBox destination;
     
     public void changeScreenButtonPushed(ActionEvent e) throws IOException{
     
@@ -184,6 +188,16 @@ public class FXMLUserViewController implements Initializable {
         
         friendsTable.setItems(getPeople());
         friendsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        
+        //for the choicebox
+        
+        location.getItems().add("San Beda");
+        location.getItems().add("Gas Station");
+        location.getItems().add("Park");
+        
+        destination.getItems().add("San Beda");
+        destination.getItems().add("Gas Station");
+        destination.getItems().add("Park");
     }   
     
     public ObservableList<User> getPeople(){
