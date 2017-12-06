@@ -102,12 +102,12 @@ public class FriendsService {
 		
     }
     
-    public void deleteFriend(String FriendsUsername) { //not sure if we use just locationID or if we should also use username
+    public void deleteFriend(String Username, String FriendsUsername) { //not sure if we use just locationID or if we should also use username
 	//get connection
 	Connection cnt = connection.getConnection();
 	
 	//create query
-	String query = "DELETE FROM " + Friend.TABLE +" WHERE FriendsUsername = ?"; //is this how you do it? haha
+	String query = "DELETE FROM " + Friend.TABLE + " WHERE FriendsUsername = ?" + " AND Username = ?"; //is this how you do it? haha
 	
 	try {
             //create prepared statement
@@ -115,6 +115,7 @@ public class FriendsService {
 
             //prepare the values
             ps.setString(1, FriendsUsername);
+            ps.setString(2, Username);
             
             //execute the update
             ps.executeUpdate();
