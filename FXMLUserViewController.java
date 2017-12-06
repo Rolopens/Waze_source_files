@@ -129,7 +129,7 @@ public class FXMLUserViewController implements Initializable {
         
         //System.out.println(currentUser.getAvatar());
         usericon.setImage(new Image("waze/" +currentUser.getAvatar()));
-        //updateDetailsAvatar.setImage(new Image(currentUser.getAvatar()));
+        updateDetailsAvatar.setImage(new Image("waze/" +currentUser.getAvatar()));
     }
     
     
