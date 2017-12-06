@@ -87,18 +87,27 @@ public class FXMLUserViewController implements Initializable {
         
         if(!EmailUpdate.getText().equals("")) {
             currentUser.setEmail(EmailUpdate.getText());
+            EmailUpdate.setText("");
+            emailAddressLabel.setText(currentUser.getEmail());
         }
         else if(!PasswordUpdate.getText().equals("")) {
             currentUser.setPassword(PasswordUpdate.getText());
+            PasswordUpdate.setText("");
         }
         else if(!PhoneNoUpdate.getText().equals("")) {
             currentUser.setPhoneNo(PhoneNoUpdate.getText());
+            PhoneNoUpdate.setText("");
+            phoneNoLabel.setText(currentUser.getPhoneNo());
         }
         else if(!LastNameUpdate.getText().equals("")) {
             currentUser.setLastName(LastNameUpdate.getText());
+            LastNameUpdate.setText("");
+            lastNameLabel.setText(currentUser.getLastName());
         }
         else if(!FirstNameUpdate.getText().equals("")) {
             currentUser.setFirstName(FirstNameUpdate.getText());
+            FirstNameUpdate.setText("");
+            firstNameLabel.setText(currentUser.getFirstName());
         }
         
         service1.updateUser(currentUser);
@@ -129,7 +138,7 @@ public class FXMLUserViewController implements Initializable {
         
         //System.out.println(currentUser.getAvatar());
         usericon.setImage(new Image("waze/" +currentUser.getAvatar()));
-        //updateDetailsAvatar.setImage(new Image(currentUser.getAvatar()));
+        updateDetailsAvatar.setImage(new Image("waze/" +currentUser.getAvatar()));
     }
     
     

@@ -87,6 +87,7 @@ public class FXMLSignUpViewController implements Initializable {
 	User.setPhoneNo(PhoneNo.getText());
 	User.setEmail(Email.getText());
 	User.setLastLogin(null);
+        User.setAvatar("default.png");
 	//User.setEmail(email.getText());
 	//User.setMobile(mobileno.getText());
 		
