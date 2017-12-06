@@ -152,7 +152,7 @@ public class FXMLUserViewController implements Initializable {
     @Override
     protected void updateItem(Image item, boolean empty) {
         super.updateItem(item, empty);
-        imageView.setImage(new Image("waze/avatars/" + "default.png"));
+        imageView.setImage(new Image("waze/" + "default.png"));
         setGraphic(imageView);
     }
 }
