@@ -159,7 +159,7 @@ public class FXMLUserViewController implements Initializable {
         FriendsService service1 = new FriendsService(new UsersDB());
            
         if(!usernameAddFriend.getText().equals("")) {
-            if(isUniqueUsername(currentUser.getUsername(), usernameAddFriend.getText()) && userExists(usernameAddFriend.getText())) {
+            if(isUniqueUsername(currentUser.getUsername(), usernameAddFriend.getText()) && userExists(usernameAddFriend.getText())&& (!usernameAddFriend.getText().equals(currentUser.getUsername()))) {
             service1.addFriend(toFriend());
             clear();
             friendsTable.setItems(getPeople(currentUser.getUsername()));}
