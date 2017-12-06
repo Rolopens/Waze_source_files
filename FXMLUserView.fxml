@@ -130,9 +130,8 @@
                             <TableColumn fx:id="dateColumn" prefWidth="112.7999267578125" text="Last Login" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="412.0" mnemonicParsing="false" onAction="#deleteFriendButtonPushed" text="Delete Friend" />
-                        <TextField fx:id="usernameAddFriend" layoutX="117.0" layoutY="451.0" prefHeight="26.0" prefWidth="248.0" promptText="Input user you want to add" />
-                        <Button layoutX="14.0" layoutY="452.0" mnemonicParsing="false" onAction="#addFriendButtonPushed" prefHeight="25.0" prefWidth="87.0" text="Add Friend" />
+                        <TextField fx:id="usernameAddFriend" layoutX="14.0" layoutY="454.0" prefHeight="26.0" prefWidth="248.0" promptText="Input user you want to add" />
+                        <Button layoutX="14.0" layoutY="410.0" mnemonicParsing="false" onAction="#addFriendButtonPushed" prefHeight="26.0" prefWidth="154.0" text="Add Friend" />
                      </children>
                   </AnchorPane>
               </content>

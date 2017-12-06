@@ -164,7 +164,7 @@ public class FXMLUserViewController implements Initializable {
             System.out.println("[ADDING ERROR] No input!");
         }
     }
-    
+    /*
     public void deleteFriendButtonPushed(ActionEvent e) throws IOException {
         FriendsService service2 = new FriendsService(new UsersDB());
         FriendList selectedRow = friendsTable.getSelectionModel().getSelectedItem();
@@ -173,7 +173,7 @@ public class FXMLUserViewController implements Initializable {
     
         friendsTable.setItems(getPeople(currentUser.getUsername()));
     }
-    
+    */
     public void travelButtonPushed(ActionEvent e) throws IOException {
         RoadDensityService serviceR = new RoadDensityService(new UsersDB());
         
