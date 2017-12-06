@@ -76,6 +76,9 @@ public class FXMLUserViewController implements Initializable {
     @FXML private ChoiceBox location;
     @FXML private ChoiceBox destination;
     
+    @FXML TextField usernameAddFriend;
+
+    
     public void changeScreenButtonPushed(ActionEvent e) throws IOException{
     
     
@@ -141,9 +144,70 @@ public class FXMLUserViewController implements Initializable {
         
     }
     
-    /**
-     * Initializes the controller class.
-     */
+    public void addFriendButtonPushed(ActionEvent e) throws IOException {
+        FriendsService service1 = new FriendsService(new UsersDB());
+           
+        if(!usernameAddFriend.getText().equals("")) {
+            if(isUniqueUsername(currentUser.getUsername(), usernameAddFriend.getText()) && userExists(usernameAddFriend.getText())) {
+            service1.addFriend(toFriend());
+            clear();
+            friendsTable.setItems(getPeople());}
+            else
+                System.out.println("[ADDING ERROR] Invalid!");
+        }
+        else {
+            System.out.println("[ADDING ERROR] No input!");
+        }
+    }
+    
+    public void deleteFriendButtonPushed(ActionEvent e) throws IOException {
+        FriendsService service2 = new FriendsService(new UsersDB());
+        User selectedRow = friendsTable.getSelectionModel().getSelectedItem();
+        
+        //service2.deleteFriend(selectedRow.getUsername(), currentUser.getUsername());
+    
+        friendsTable.setItems(getPeople());
+    }
+
+    private Friend toFriend() {
+        Friend Friend = new Friend();
+		
+	Friend.setUsername(currentUser.getUsername());
+        Friend.setFriendsUsername(usernameAddFriend.getText());
+		
+	return Friend;
+    }
+    
+    public void clear(){
+        usernameAddFriend.setText("");
+    }
+    
+    public boolean isUniqueUsername(String currentUserName, String friendUserName){
+        FriendsService service = new FriendsService(new UsersDB());
+        List <Friend> Friends = service.getAll();
+        boolean unique = true;
+        
+        for (Friend x: Friends) {
+            if (x.getUsername().equals(currentUserName) && x.getFriendsUsername().equals(friendUserName))
+                unique = false;
+       }
+        
+        return unique;
+    }
+    
+    public boolean userExists(String friendUserName){
+        UsersService service = new UsersService(new UsersDB());
+        List <User> Users = service.getAll();
+        boolean unique = false;
+        
+        for (User x: Users) {
+            if (x.getUsername().equals(friendUserName))
+                unique = true;
+       }
+        
+        return unique;
+    }
+    
     public void initUser(User user){
         this.currentUser = user;
         welcome.setText("Hello, " + currentUser.getFirstName() + "!");
@@ -204,7 +268,7 @@ public class FXMLUserViewController implements Initializable {
        ObservableList<User> people = FXCollections.observableArrayList();
        
        UsersService service = new UsersService(new UsersDB());
-       List <User> Users = service.getAll();
+       List <User> Users = service.getAll(); // change to friends
 		
        for (User User: Users) {
             people.add(User);
