@@ -41,7 +41,7 @@
                               <Image url="@wazecolorback.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="14.0" layoutY="273.0" mnemonicParsing="false" text="Travel" />
+                        <Button fx:id="travel" layoutX="14.0" layoutY="273.0" mnemonicParsing="false" onAction="#travelButtonPushed" text="Travel" />
                         <TextArea layoutX="14.0" layoutY="323.0" prefHeight="50.0" prefWidth="298.0" text="Travel Log Here" />
                         <ChoiceBox fx:id="location" layoutX="44.0" layoutY="79.0" prefHeight="31.0" prefWidth="335.0" />
                         <ChoiceBox fx:id="destination" layoutX="44.0" layoutY="175.0" prefHeight="31.0" prefWidth="335.0" />
@@ -138,7 +138,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <ImageView fitHeight="498.0" fitWidth="447.0" layoutX="450.0" layoutY="94.0">
+      <ImageView fx:id="map" fitHeight="498.0" fitWidth="447.0" layoutX="450.0" layoutY="94.0">
          <image>
             <Image url="@aHills.png" />
          </image>

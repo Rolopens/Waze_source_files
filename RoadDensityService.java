@@ -76,6 +76,25 @@ public class RoadDensityService {
 	return RoadDensity;
     }
     
-    
+    public void addTraficReport(RoadDensity rd, String stName){
+        Connection cnt = connection.getConnection();
+        String query = "UPDATE " + rd.TABLE + " SET " + rd.COL_HIGHTRAFFICREPORTS + "=" + rd.COL_HIGHTRAFFICREPORTS + " + 1" + 
+                " WHERE " + rd.COL_STNAME + "=" + stName;
+        
+        try{
+            PreparedStatement ps = cnt.prepareStatement(query);
+            ps.setString(1, rd.getStName());
+            ps.setInt(2, rd.getTrafficReports());
+            ps.executeUpdate();
+            
+            ps.close();
+            cnt.close();
+	
+            System.out.println("[RoadDensity] UPDATION SUCCESS :3!");
+        } catch(SQLException e){
+            System.out.println("[RoadDensity] UPDATION FAILED! :(");
+            e.printStackTrace();
+        }
+    }
     
 }
