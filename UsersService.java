@@ -125,7 +125,7 @@ public class UsersService {
 		User.setAvatar(rs.getString(User.COL_AVATAR));
 		User.setPhoneNo(rs.getString(User.COL_PHONENO));
 		User.setEmail(rs.getString(User.COL_EMAIL));
-		User.setLastLogin(rs.getDate(User.COL_LASTLOGIN));
+		User.setLastLogin(rs.getString(User.COL_LASTLOGIN));
 		//User.setGroup(rs.getString(User.COL_GROUP));
 		//User.setMobile(rs.getString(User.COL_MOBILE));
 		//User.setName(rs.getString(User.COL_NAME));
@@ -212,7 +212,8 @@ public class UsersService {
 				+ User.COL_PASSWORD + " = ?,"
 				+ User.COL_PHONENO + " = ?,"
 				+ User.COL_LASTNAME + " = ?,"
-				+ User.COL_FIRSTNAME + " = ?" + 
+				+ User.COL_FIRSTNAME + " = ?," 
+                                + User.COL_LASTLOGIN + " = ? " +
 				" WHERE " + User.COL_USERNAME + " = ?";
 		
 		try {
@@ -225,7 +226,8 @@ public class UsersService {
 			ps.setString(3, User.getPhoneNo());
 			ps.setString(4, User.getLastName());
 			ps.setString(5, User.getFirstName());
-			ps.setString(6, User.getUsername());
+                        ps.setString(6, User.getLastLogin());
+			ps.setString(7, User.getUsername());
 			
 			//execute the update
 			ps.executeUpdate();

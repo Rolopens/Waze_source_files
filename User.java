@@ -10,7 +10,7 @@ public class User {
 	private String Avatar;
 	private String PhoneNo;
 	private String Email;
-	private Date LastLogin;
+	private String LastLogin;
 	
 	
 	public static final String TABLE = "useraccounts";
@@ -86,11 +86,11 @@ public class User {
 		Email = email;
 	}
 
-	public Date getLastLogin() {
+	public String getLastLogin() {
 		return LastLogin;
 	}
 
-	public void setLastLogin(Date lastLogin) {
+	public void setLastLogin(String lastLogin) {
 		LastLogin = lastLogin;
 	}
 }
