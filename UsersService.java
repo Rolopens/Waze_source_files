@@ -10,6 +10,7 @@ import java.util.List;
 //import java.sql.Date;
 
 import com.sun.org.apache.bcel.internal.generic.Type;
+import java.sql.Statement;
 
 
 
@@ -56,7 +57,7 @@ public class UsersService {
 		return Users;
 	}
 
-	/* public List<User> getFriends(User User) {
+	public List<User> getFriends(User x) {
 		// create an empty list of Users
 		List<User> Friends = new ArrayList<User>();
 		
@@ -64,19 +65,23 @@ public class UsersService {
 		Connection cnt = connection.getConnection();
 		
 		//create string query
-		String query = "SELECT " + User.COL_LASTNAME
+		String query = "SELECT " + User.COL_USERNAME
+                        + ", " + User.COL_PASSWORD
+                        + ", " + User.COL_LASTNAME
                         + ", " + User.COL_FIRSTNAME
                         + ", " + User.COL_AVATAR
+                        + ", " + User.COL_PHONENO
+                        + ", " + User.COL_EMAIL
                         + ", " + User.COL_LASTLOGIN
-                        + " FROM " + User.TABLE + " U " + " JOIN" + " friends F"
-                        + " ON U.Username = F.Username"
-                        + " WHERE U." + User.COL_USERNAME + " = ?";
+                        + " FROM (" + User.TABLE + " U INNER JOIN " + Friend.TABLE
+                        + " ON U." + User.COL_USERNAME + " = " + Friend.COL_FRIENDSUSERNAME
+                        + ") WHERE U." + User.COL_USERNAME + " = ?";
 		try {
 			//create prepared statement
 			PreparedStatement ps = cnt.prepareStatement(query);
                         System.out.println(query);
                         
-			ps.setString(1, User.getUsername());
+			ps.setString(1, x.getUsername());
 			
 			//get result and store in result set
 			ResultSet rs = ps.executeQuery();
@@ -99,7 +104,7 @@ public class UsersService {
 		
 		//return list
 		return Friends;
-	} */
+	}
 	
 	public static void main(String[] args) {
 		UsersService service = new UsersService(new UsersDB());
