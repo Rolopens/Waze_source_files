@@ -136,6 +136,22 @@
                   </AnchorPane>
               </content>
             </Tab>
+            <Tab text="Favorite Places">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="query2" layoutX="31.0" layoutY="64.0" prefHeight="504.0" prefWidth="447.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="locationNameColumn" prefWidth="126.39999389648438" text="Location Name " />
+                              <TableColumn fx:id="streetNameColumn" prefWidth="124.80001831054688" text="Street Name" />
+                              <TableColumn fx:id="cityColumn" prefWidth="104.0" text="City" />
+                              <TableColumn fx:id="countryColumn" prefWidth="91.20001220703125" text="Country" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
       <ImageView fx:id="map" fitHeight="498.0" fitWidth="447.0" layoutX="450.0" layoutY="94.0">

@@ -71,6 +71,12 @@ public class FXMLUserViewController implements Initializable {
     @FXML TableColumn<FriendList, String> lastNameColumn;
     @FXML TableColumn<FriendList, String> dateColumn;
     
+    @FXML TableView<SavedLocationInnerJoinLocation> query2;
+    @FXML TableColumn<SavedLocationInnerJoinLocation, String> locationNameColumn;
+    @FXML TableColumn<SavedLocationInnerJoinLocation, String> streetNameColumn;
+    @FXML TableColumn<SavedLocationInnerJoinLocation, String> cityColumn;
+    @FXML TableColumn<SavedLocationInnerJoinLocation, String> countryColumn;
+    
     @FXML ImageView usericon;
     @FXML ImageView updateDetailsAvatar;
     
@@ -264,6 +270,15 @@ public class FXMLUserViewController implements Initializable {
         
         friendsTable.setItems(getPeople(currentUser.getUsername()));
         friendsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        
+        locationNameColumn.setCellValueFactory(new PropertyValueFactory<SavedLocationInnerJoinLocation, String>("locationName"));
+        streetNameColumn.setCellValueFactory(new PropertyValueFactory<SavedLocationInnerJoinLocation, String>("StName"));
+        cityColumn.setCellValueFactory(new PropertyValueFactory<SavedLocationInnerJoinLocation, String>("City"));
+        countryColumn.setCellValueFactory(new PropertyValueFactory<SavedLocationInnerJoinLocation, String>("Country"));
+        
+        query2.setItems(getLocations(currentUser.getUsername()));
+        friendsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        
     }
     
     private class ImageTableCell<S> extends TableCell<S, Image> {
@@ -325,6 +340,19 @@ public class FXMLUserViewController implements Initializable {
        }
        
        return people;
-    }    
+    }   
+    
+    public ObservableList<SavedLocationInnerJoinLocation> getLocations(String username){
+       ObservableList<SavedLocationInnerJoinLocation> people = FXCollections.observableArrayList();
+       
+       SLInnerJoinLService service = new SLInnerJoinLService(new UsersDB());
+       List <SavedLocationInnerJoinLocation> Users = service.getAll(username); // change to friends
+		
+       for (SavedLocationInnerJoinLocation User: Users) {
+            people.add(User);
+       }
+       
+       return people;
+    }  
     
 }
