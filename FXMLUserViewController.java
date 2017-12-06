@@ -75,6 +75,8 @@ public class FXMLUserViewController implements Initializable {
     
     @FXML private ChoiceBox location;
     @FXML private ChoiceBox destination;
+    @FXML private ImageView map;
+    @FXML private Button travel;
     
     @FXML TextField usernameAddFriend;
 
@@ -164,11 +166,22 @@ public class FXMLUserViewController implements Initializable {
         FriendsService service2 = new FriendsService(new UsersDB());
         User selectedRow = friendsTable.getSelectionModel().getSelectedItem();
         
-        //service2.deleteFriend(selectedRow.getUsername(), currentUser.getUsername());
+        service2.deleteFriend(selectedRow.getUsername(), currentUser.getUsername());
     
         friendsTable.setItems(getPeople());
     }
-
+    
+    public void travelButtonPushed(ActionEvent e) throws IOException {
+        if(location.getValue().toString() == "San Beda" && destination.getValue().toString() == "Park" || location.getValue().toString() == "Park" && destination.getValue().toString() == "San Beda"){
+            map.setImage(new Image("waze/SBP1.png"));
+        }else if(location.getValue().toString() == "San Beda" && destination.getValue().toString() == "Gas Station" || location.getValue().toString() == "Gas Station" && destination.getValue().toString() == "San Beda"){
+            map.setImage(new Image("waze/SBG1.png"));
+        }else if(location.getValue().toString() == "Gas Station" && destination.getValue().toString() == "Park" || location.getValue().toString() == "Park" && destination.getValue().toString() == "Gas Station"){
+            map.setImage(new Image("waze/GSP1.png"));
+        }else
+            map.setImage(new Image("waze/aHills.png"));
+    }
+    
     private Friend toFriend() {
         Friend Friend = new Friend();
 		
