@@ -9,6 +9,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -68,6 +73,8 @@ public class FXMLUserViewController implements Initializable {
     @FXML ImageView updateDetailsAvatar;
     
     public void changeScreenButtonPushed(ActionEvent e) throws IOException{
+    
+    
     Parent adminViewParent = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
     Scene adminViewScene  = new Scene(adminViewParent);
         
@@ -75,11 +82,17 @@ public class FXMLUserViewController implements Initializable {
        
     window.setScene(adminViewScene);
     window.show();
+    
+    
+    
     //will add lastlogin code here
-    java.sql.Date sqlDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-    currentUser.setLastLogin(sqlDate);
-    System.out.println(currentUser.getLastLogin().toString());
+    LocalDate today = LocalDate.now();
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+    currentUser.setLastLogin(dtf.format(today));
     //still need to fix update function in service file
+    UsersService service1 = new UsersService(new UsersDB());
+    service1.updateUser(currentUser);
 }
     
     public void updateDetailsButtonPushed(ActionEvent e) throws IOException{
