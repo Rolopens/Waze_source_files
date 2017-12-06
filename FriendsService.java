@@ -29,6 +29,7 @@ public class FriendsService {
 	try {
 		//create prepared statement
 		PreparedStatement ps = cnt.prepareStatement(query);
+             
 		
 		//get result and store in result set
 		ResultSet rs = ps.executeQuery();
@@ -54,12 +55,8 @@ public class FriendsService {
     }
         
     public static void main(String[] args) {
-	FriendsService service = new FriendsService(new UsersDB());
-	List <Friend> Friends = service.getAll();
 	
-	for (Friend Friend: Friends) {
-		System.out.println(Friend);
-	}
+	
     }
     
     private Friend toFriend(ResultSet rs) throws SQLException {
