@@ -1,5 +1,5 @@
 package waze;
-
+//test
 public class Friend {
     private String Username;
     private String FriendsUsername; // friends username
