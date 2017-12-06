@@ -144,7 +144,7 @@
                           <columns>
                             <TableColumn fx:id="locationNameColumn" prefWidth="126.39999389648438" text="Location Name " />
                               <TableColumn fx:id="streetNameColumn" prefWidth="124.80001831054688" text="Street Name" />
-                              <TableColumn fx:id="cityColumn" prefWidth="104.0" text="City" />
+                              <TableColumn fx:id="cityColumn" editable="false" prefWidth="104.0" text="City" />
                               <TableColumn fx:id="countryColumn" prefWidth="91.20001220703125" text="Country" />
                           </columns>
                         </TableView>
