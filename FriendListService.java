@@ -25,7 +25,7 @@ public class FriendListService {
             Connection cnt = connection.getConnection();
 	
 	//create string query
-	String query = "select f.Username, LastName, FirstName, Avatar, LastLogin FROM useraccounts u inner join friends f on f.FriendsUsername = U.Username WHERE f.Username = '?'";
+	String query = "select f.Username, LastName, FirstName, Avatar, LastLogin FROM useraccounts u inner join friends f on f.FriendsUsername = U.Username WHERE f.Username = ?";
 	try {
 		//create prepared statement
 		PreparedStatement ps = cnt.prepareStatement(query);
@@ -45,9 +45,9 @@ public class FriendListService {
 		rs.close();
 		cnt.close();
 		
-		System.out.println("[FriendS] SELECT SUCCESS!");
+		System.out.println("[FriendLIST] SELECT SUCCESS!");
 	} catch (SQLException e) {
-		System.out.println("[FriendS] SELECT FAILED!");
+		System.out.println("[FriendLIST] SELECT FAILED!");
 		e.printStackTrace();
 	}
 	

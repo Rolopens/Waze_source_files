@@ -65,11 +65,11 @@ public class FXMLUserViewController implements Initializable {
     @FXML Label emailAddressLabel;
     @FXML Label phoneNoLabel;
     
-    @FXML TableView<User> friendsTable;
-    @FXML TableColumn<User, Image> avatarColumn;
-    @FXML TableColumn<User, String> firstNameColumn;
-    @FXML TableColumn<User, String> lastNameColumn;
-    @FXML TableColumn<User, java.sql.Date> dateColumn;
+    @FXML TableView<FriendList> friendsTable;
+    @FXML TableColumn<FriendList, Image> avatarColumn;
+    @FXML TableColumn<FriendList, String> firstNameColumn;
+    @FXML TableColumn<FriendList, String> lastNameColumn;
+    @FXML TableColumn<FriendList, String> dateColumn;
     
     @FXML ImageView usericon;
     @FXML ImageView updateDetailsAvatar;
@@ -148,7 +148,7 @@ public class FXMLUserViewController implements Initializable {
         window.show();*/               
         
     }
-    
+    /*
     public void addFriendButtonPushed(ActionEvent e) throws IOException {
         FriendsService service1 = new FriendsService(new UsersDB());
            
@@ -156,7 +156,7 @@ public class FXMLUserViewController implements Initializable {
             if(isUniqueUsername(currentUser.getUsername(), usernameAddFriend.getText()) && userExists(usernameAddFriend.getText())) {
             service1.addFriend(toFriend());
             clear();
-            friendsTable.setItems(getPeople());}
+            friendsTable.setItems(getPeople(currentUser.getUsername()));}
             else
                 System.out.println("[ADDING ERROR] Invalid!");
         }
@@ -173,7 +173,7 @@ public class FXMLUserViewController implements Initializable {
     
         friendsTable.setItems(getPeople());
     }
-    
+    */
     public void travelButtonPushed(ActionEvent e) throws IOException {
         if(location.getValue().toString() == "San Beda" && destination.getValue().toString() == "Park" || location.getValue().toString() == "Park" && destination.getValue().toString() == "San Beda"){
             map.setImage(new Image("waze/SBP1.png"));
@@ -246,6 +246,17 @@ public class FXMLUserViewController implements Initializable {
         //System.out.println(currentUser.getAvatar());
         usericon.setImage(new Image("waze/" +currentUser.getAvatar()));
         updateDetailsAvatar.setImage(new Image("waze/" +currentUser.getAvatar()));
+        
+        
+        avatarColumn.setCellValueFactory(new PropertyValueFactory<>("image"));
+        avatarColumn.setCellFactory(param -> new ImageTableCell<>());
+        
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<FriendList, String>("FirstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<FriendList, String>("LastName"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<FriendList, String>("Last Login"));
+        
+        friendsTable.setItems(getPeople(currentUser.getUsername()));
+        friendsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
     
     private class ImageTableCell<S> extends TableCell<S, Image> {
@@ -268,15 +279,7 @@ public class FXMLUserViewController implements Initializable {
         // TODO
         // TODO
         
-        avatarColumn.setCellValueFactory(new PropertyValueFactory<>("image"));
-        avatarColumn.setCellFactory(param -> new ImageTableCell<>());
         
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("FirstName"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("LastName"));
-        // dateColumn.setCellValueFactory(new PropertyValueFactory<User, Date>("LastLogin"));
-        
-        friendsTable.setItems(getPeople());
-        friendsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         
         //for the choicebox
         
@@ -304,13 +307,13 @@ public class FXMLUserViewController implements Initializable {
         streets.getItems().add("Trece Martires");
     }   
     
-    public ObservableList<User> getPeople(){
-       ObservableList<User> people = FXCollections.observableArrayList();
+    public ObservableList<FriendList> getPeople(String username){
+       ObservableList<FriendList> people = FXCollections.observableArrayList();
        
-       UsersService service = new UsersService(new UsersDB());
-       List <User> Users = service.getAll(); // change to friends
+       FriendListService service = new FriendListService(new UsersDB());
+       List <FriendList> Users = service.getAll(username); // change to friends
 		
-       for (User User: Users) {
+       for (FriendList User: Users) {
             people.add(User);
        }
        
