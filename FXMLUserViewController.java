@@ -127,8 +127,9 @@ public class FXMLUserViewController implements Initializable {
         emailAddressLabel.setText(currentUser.getEmail());
         phoneNoLabel.setText(currentUser.getPhoneNo());
         
-        usericon.setImage(new Image("waze/avatars/" + currentUser.getAvatar()));
-        updateDetailsAvatar.setImage(new Image("waze/avatars/" + currentUser.getAvatar()));
+        //System.out.println(currentUser.getAvatar());
+        //usericon.setImage(new Image(currentUser.getAvatar()));
+        //updateDetailsAvatar.setImage(new Image(currentUser.getAvatar()));
     }
     
     
