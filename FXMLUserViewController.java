@@ -49,6 +49,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class FXMLUserViewController implements Initializable {
     
     private User currentUser;
+    private RoadDensity currentRD;
     @FXML Label welcome;
     @FXML Button logoutButton;
     
@@ -75,8 +76,10 @@ public class FXMLUserViewController implements Initializable {
     
     @FXML private ChoiceBox location;
     @FXML private ChoiceBox destination;
+    @FXML private ChoiceBox streets;
     @FXML private ImageView map;
     @FXML private Button travel;
+    @FXML private Button report;
     
     @FXML TextField usernameAddFriend;
 
@@ -182,6 +185,15 @@ public class FXMLUserViewController implements Initializable {
             map.setImage(new Image("waze/aHills.png"));
     }
     
+    public void reportButtonPushed(ActionEvent e) throws IOException {
+        RoadDensityService serviceR = new RoadDensityService(new UsersDB());
+        
+        serviceR.addTraficReport(currentRD, streets.getValue().toString());
+        
+        //System.out.println(currentRD.toString());
+        //currentRD.setTrafficReports(currentRD.getTrafficReports());
+    }
+    
     private Friend toFriend() {
         Friend Friend = new Friend();
 		
@@ -275,6 +287,21 @@ public class FXMLUserViewController implements Initializable {
         destination.getItems().add("San Beda");
         destination.getItems().add("Gas Station");
         destination.getItems().add("Park");
+        
+        streets.getItems().add("Don Manolo");
+        streets.getItems().add("Don Jesus");
+        streets.getItems().add("Angeles I");
+        streets.getItems().add("Angeles II");
+        streets.getItems().add("Cebu");
+        streets.getItems().add("Dona Annie");
+        streets.getItems().add("Bacolod");
+        streets.getItems().add("Dona Mary");
+        streets.getItems().add("Ormoc");
+        streets.getItems().add("Don Ines I");
+        streets.getItems().add("Don Ines II");
+        streets.getItems().add("Tacloban");
+        streets.getItems().add("Tagbilaran");
+        streets.getItems().add("Trece Martires");
     }   
     
     public ObservableList<User> getPeople(){

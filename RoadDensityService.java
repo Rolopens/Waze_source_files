@@ -5,6 +5,7 @@
  */
 package waze;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -77,15 +78,15 @@ public class RoadDensityService {
 	return RoadDensity;
     }
     
-    public void addTraficReport(RoadDensity rd, String stName){
+    public void addTraficReport(RoadDensity rd, String stName) {
         Connection cnt = connection.getConnection();
-        String query = "UPDATE " + rd.TABLE + " SET " + rd.COL_HIGHTRAFFICREPORTS + "=" + rd.COL_HIGHTRAFFICREPORTS + " + 1" + 
-                " WHERE " + rd.COL_STNAME + "=" + stName;
-        
+        String query = "UPDATE waze." + rd.TABLE + " SET " + rd.COL_HIGHTRAFFICREPORTS + "=" + rd.COL_HIGHTRAFFICREPORTS + " + 1" + 
+                " WHERE StName ='" + stName+"'";
+        System.out.println(query);
         try{
             PreparedStatement ps = cnt.prepareStatement(query);
-            ps.setString(1, rd.getStName());
-            ps.setInt(2, rd.getTrafficReports());
+            //ps.setString(1, rd.getStName());
+            //ps.setInt(2, rd.getTrafficReports());
             ps.executeUpdate();
             
             ps.close();
