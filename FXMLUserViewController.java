@@ -190,7 +190,8 @@ public class FXMLUserViewController implements Initializable {
         
         serviceR.addTraficReport(currentRD, streets.getValue().toString());
         
-        currentRD.setTrafficReports(currentRD.getTrafficReports());
+        //System.out.println(currentRD.toString());
+        //currentRD.setTrafficReports(currentRD.getTrafficReports());
     }
     
     private Friend toFriend() {

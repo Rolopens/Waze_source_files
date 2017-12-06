@@ -57,6 +57,7 @@ public class FXMLDocumentController implements Initializable {
             if(passwordTextField.getText().equals(returnUsername(usernameTextField.getText()).getPassword())){
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("FXMLUserView.fxml"));
+                System.out.println(loader.toString());
                 Parent adminViewParent = loader.load();
                 Scene adminViewScene  = new Scene(adminViewParent);
             
