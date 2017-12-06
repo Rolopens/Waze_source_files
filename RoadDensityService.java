@@ -102,12 +102,12 @@ public class RoadDensityService {
     public ArrayList<String> getBestSBG(RoadDensity rd){
         int sum1 = 0, sum2 = 0, sum3 = 0;
         Connection cnt = connection.getConnection();
-        String query1 = "SELECT SUM(TrafficReports) as sumtraffic1 from road_density where stName in (";
-        String formatted1 = query1.concat(String.join(",", rd.getRouteSBG1().toArray(new CharSequence[rd.getRouteSBG1().size()]))) + ");";
-        String query2 = "SELECT SUM(TrafficReports) as sumtraffic2 from road_density where stName in (";
-        String formatted2 = query2.concat(String.join(",", rd.getRouteSBG2().toArray(new CharSequence[rd.getRouteSBG2().size()]))) + ");";
-        String query3 = "SELECT SUM(TrafficReports) as sumtraffic3 from road_density where stName in (";
-        String formatted3 = query3.concat(String.join(",", rd.getRouteSBG3().toArray(new CharSequence[rd.getRouteSBG3().size()]))) + ");";
+        String query1 = "SELECT SUM(TrafficReports) as sumtraffic1 from road_density where stName in ('";
+        String formatted1 = query1.concat(String.join("','", rd.getRouteSBG1().toArray(new CharSequence[rd.getRouteSBG1().size()]))) + "');";
+        String query2 = "SELECT SUM(TrafficReports) as sumtraffic2 from road_density where stName in ('";
+        String formatted2 = query2.concat(String.join("','", rd.getRouteSBG2().toArray(new CharSequence[rd.getRouteSBG2().size()]))) + "');";
+        String query3 = "SELECT SUM(TrafficReports) as sumtraffic3 from road_density where stName in ('";
+        String formatted3 = query3.concat(String.join("','", rd.getRouteSBG3().toArray(new CharSequence[rd.getRouteSBG3().size()]))) + "');";
         
         System.out.println(formatted1 + formatted2 + formatted3);
         
