@@ -183,7 +183,7 @@ public class UsersService {
 					ps.setString(5, "default.png");
 					ps.setString(6, User.getPhoneNo());
 					ps.setString(7, User.getEmail());
-					ps.setDate(8, null);
+					ps.setString(8, null);
 					
 					//execute the update
 					ps.executeUpdate();
