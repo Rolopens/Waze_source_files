@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.List;
 /**
  *
@@ -96,5 +97,58 @@ public class RoadDensityService {
             e.printStackTrace();
         }
     }
+    
+    public ArrayList<String> getBestSBG(RoadDensity rd){
+        int sum1 = 0, sum2 = 0, sum3 = 0;
+        Connection cnt = connection.getConnection();
+        String query1 = "SELECT SUM(TrafficReports) as sumtraffic1 from road_density where stName in ({0});";
+        String formatted1 = String.format(query1, String.join(",", rd.getRouteSBG1()));
+        String query2 = "SELECT SUM(TrafficReports) as sumtraffic2 from road_density where stName in ({0});";
+        String formatted2 = String.format(query2, String.join(",", rd.getRouteSBG2()));
+        String query3 = "SELECT SUM(TrafficReports) as sumtraffic3 from road_density where stName in ({0});";
+        String formatted3 = String.format(query3, String.join(",", rd.getRouteSBG1()));
+        
+        System.out.println(formatted1 + formatted2 + formatted3);
+        
+        try{
+            PreparedStatement ps1 = cnt.prepareStatement(formatted1);
+            PreparedStatement ps2 = cnt.prepareStatement(formatted2);
+            PreparedStatement ps3 = cnt.prepareStatement(formatted3);
+            
+            ResultSet rs1, rs2, rs3;
+            
+            rs1 = ps1.executeQuery();
+            rs2 = ps2.executeQuery();
+            rs3 = ps3.executeQuery();
+            
+            if(rs1.next()){
+                sum1 = rs1.getInt("sumtraffic1");
+            }
+            if(rs2.next()){
+                sum2 = rs2.getInt("sumtraffic2");
+            }
+            if(rs3.next()){
+                sum3 = rs3.getInt("sumtraffic3");
+            }
+            
+            if(sum1<sum2 && sum1<sum3)
+                return rd.getRouteSBG1();
+            
+            if(sum2<sum1 && sum2<sum3)
+                return rd.getRouteSBG2();
+            
+            if(sum3<sum1 && sum3<sum2)
+                return rd.getRouteSBG3();
+            
+            
+        }catch(SQLException e){
+            System.out.println("[RoadDensity] FAILED! :(");
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+    
+    
     
 }
