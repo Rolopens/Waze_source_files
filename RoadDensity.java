@@ -17,34 +17,15 @@ public class RoadDensity {
     
     
     public static final String TABLE = "road_density";     
-    public static final String COL_USERNAME = "Username";
-    public static final String COL_LOCATIONID = "LocationID";
     public static final String COL_STNAME = "StName";
     public static final String COL_TRAFFICREPORTS = "TrafficReports";
 
     @Override
     public String toString() {
-	return "road_density [Username=" + username + ", LocationID=" + LocationID + ", StName=" + stName + ", TrafficReports="+ trafficReports +"]";
+	return "road_density [StName=" + stName + ", TrafficReports="+ trafficReports +"]";
     }
     
-    
-    
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public int getLocationID() {
-        return LocationID;
-    }
-
-    public void setLocationID(int LocationID) {
-        this.LocationID = LocationID;
-    }
-
+ 
     public String getStName() {
         return stName;
     }
