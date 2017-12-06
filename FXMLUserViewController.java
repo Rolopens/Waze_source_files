@@ -148,7 +148,7 @@ public class FXMLUserViewController implements Initializable {
         window.show();*/               
         
     }
-    /*
+    
     public void addFriendButtonPushed(ActionEvent e) throws IOException {
         FriendsService service1 = new FriendsService(new UsersDB());
            
@@ -167,13 +167,13 @@ public class FXMLUserViewController implements Initializable {
     
     public void deleteFriendButtonPushed(ActionEvent e) throws IOException {
         FriendsService service2 = new FriendsService(new UsersDB());
-        User selectedRow = friendsTable.getSelectionModel().getSelectedItem();
+        FriendList selectedRow = friendsTable.getSelectionModel().getSelectedItem();
         
         service2.deleteFriend(selectedRow.getUsername(), currentUser.getUsername());
     
-        friendsTable.setItems(getPeople());
+        friendsTable.setItems(getPeople(currentUser.getUsername()));
     }
-    */
+    
     public void travelButtonPushed(ActionEvent e) throws IOException {
         RoadDensityService serviceR = new RoadDensityService(new UsersDB());
         
