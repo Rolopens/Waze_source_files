@@ -16,6 +16,11 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="waze.FXMLUserViewController">
    <children>
+      <ImageView fitHeight="642.0" fitWidth="918.0" layoutX="-8.0" layoutY="-34.0">
+         <image>
+            <Image url="@wazecolorback.png" />
+         </image>
+      </ImageView>
       <Label fx:id="welcome" layoutX="67.0" layoutY="11.0" prefHeight="49.0" prefWidth="211.0" text="Label">
          <font>
             <Font name="System Bold" size="25.0" />
@@ -30,6 +35,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
+                        <ImageView fitHeight="511.0" fitWidth="470.0" layoutY="-3.0">
+                           <image>
+                              <Image url="@wazecolorback.png" />
+                           </image>
+                        </ImageView>
                         <TableView layoutX="14.0" layoutY="52.0" prefHeight="201.0" prefWidth="276.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Location" />
@@ -49,6 +59,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
+                        <ImageView fitHeight="543.0" fitWidth="467.0" layoutX="-17.0" layoutY="-1.0">
+                           <image>
+                              <Image url="@wazecolorback.png" />
+                           </image>
+                        </ImageView>
                         <Label layoutX="23.0" layoutY="14.0" text="User Information">
                            <font>
                               <Font name="System Bold" size="16.0" />
@@ -105,6 +120,11 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
+                        <ImageView fitHeight="172.0" fitWidth="494.0" layoutX="-28.0" layoutY="410.0">
+                           <image>
+                              <Image url="@wazecolorback.png" />
+                           </image>
+                        </ImageView>
                         <TableView fx:id="friendsTable" prefHeight="398.0" prefWidth="447.0">
                           <columns>
                             <TableColumn fx:id="avatarColumn" prefWidth="100.79995882511139" text="Friend" />
