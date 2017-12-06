@@ -8,11 +8,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="waze.FXMLAdminViewController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="900.0">
+      <ImageView fitHeight="610.0" fitWidth="917.0" layoutX="-17.0" layoutY="-10.0">
          <image>
             <Image url="@wazecolorback.png" />
          </image>
@@ -49,5 +50,11 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" />
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="100.0">
+         <image>
+            <Image url="@adminID.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -109,6 +109,7 @@ public class FXMLUserViewController implements Initializable {
             currentUser.setFirstName(FirstNameUpdate.getText());
             FirstNameUpdate.setText("");
             firstNameLabel.setText(currentUser.getFirstName());
+            welcome.setText("Hello, " + currentUser.getFirstName() + "!");
         }
         
         service1.updateUser(currentUser);
