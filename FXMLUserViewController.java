@@ -175,10 +175,17 @@ public class FXMLUserViewController implements Initializable {
     }
     
     public void travelButtonPushed(ActionEvent e) throws IOException {
+        RoadDensityService serviceR = new RoadDensityService(new UsersDB());
+        
         if(location.getValue().toString() == "San Beda" && destination.getValue().toString() == "Park" || location.getValue().toString() == "Park" && destination.getValue().toString() == "San Beda"){
             map.setImage(new Image("waze/SBP1.png"));
         }else if(location.getValue().toString() == "San Beda" && destination.getValue().toString() == "Gas Station" || location.getValue().toString() == "Gas Station" && destination.getValue().toString() == "San Beda"){
-            map.setImage(new Image("waze/SBG1.png"));
+            if(serviceR.getBestSBG(currentRD) == currentRD.getRouteSBG1())
+                map.setImage(new Image("waze/SBG1.png"));
+            if(serviceR.getBestSBG(currentRD) == currentRD.getRouteSBG2())
+                map.setImage(new Image("waze/SBG2.png"));
+            if(serviceR.getBestSBG(currentRD) == currentRD.getRouteSBG3())
+                map.setImage(new Image("waze/SBG3.png"));
         }else if(location.getValue().toString() == "Gas Station" && destination.getValue().toString() == "Park" || location.getValue().toString() == "Park" && destination.getValue().toString() == "Gas Station"){
             map.setImage(new Image("waze/GSP1.png"));
         }else
