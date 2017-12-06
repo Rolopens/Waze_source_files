@@ -26,6 +26,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableCell;
@@ -122,7 +123,6 @@ public class FXMLUserViewController implements Initializable {
         
     }
     
-    
     /**
      * Initializes the controller class.
      */
@@ -141,9 +141,6 @@ public class FXMLUserViewController implements Initializable {
         updateDetailsAvatar.setImage(new Image("waze/" +currentUser.getAvatar()));
     }
     
-    
-    
-    /*
     private class ImageTableCell<S> extends TableCell<S, Image> {
     final ImageView imageView = new ImageView();
 
@@ -154,53 +151,18 @@ public class FXMLUserViewController implements Initializable {
     @Override
     protected void updateItem(Image item, boolean empty) {
         super.updateItem(item, empty);
-
-        if (empty || item == null) {
-            imageView.setImage(null);
-            setText(null);
-            setGraphic(null);
-        }
-
-        imageView.setImage(item);
+        imageView.setImage(new Image("waze/avatars/" + "default.png"));
         setGraphic(imageView);
     }
 }
-    */
-    
-    
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         // TODO
-        /*
+        
         avatarColumn.setCellValueFactory(new PropertyValueFactory<>("image"));
         avatarColumn.setCellFactory(param -> new ImageTableCell<>());
-        */
-        /*
-        avatarColumn.setCellValueFactory(new PropertyValueFactory<User, Image>("Avatar"));
-        
-        avatarColumn.setCellFactory(param -> {
-        //Set up the ImageView
-        final ImageView imageview = new ImageView();
-        imageview.setFitHeight(10);
-        imageview.setFitWidth(10);
-        ///imageview.setImage(imageComputer); //uncommenting this places the image on all cells, even empty ones
-        //Set up the Table
-        TableCell<User, Image> cell = new TableCell<User, Image>() {
-            @Override
-            public void updateItem(Image item, boolean empty) {
-                if (item != null) {  // choice of image is based on values from item, but it doesn't matter now
-                    imageview.setImage(new Image("waze.png"));
-                    System.out.println("boy");
-                }
-            }
-        };
-        // Attach the imageview to the cell
-        cell.setGraphic(imageview);
-        return cell;
-    }); */
         
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("FirstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<User, String>("LastName"));
