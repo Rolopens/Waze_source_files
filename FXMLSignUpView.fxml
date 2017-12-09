@@ -26,8 +26,8 @@
       <VBox layoutX="479.0" layoutY="225.0" prefHeight="200.0" prefWidth="204.0" spacing="30.0">
          <children>
             <TextField fx:id="PhoneNo" promptText="Mobile Number" />
-            <TextField fx:id="FirstName" promptText="Last Name" />
-            <TextField fx:id="LastName" promptText="First Name" />
+            <TextField fx:id="LastName" promptText="Last Name" />
+            <TextField fx:id="FirstName" promptText="First Name" />
          </children>
       </VBox>
       <ImageView fitHeight="130.0" fitWidth="448.0" layoutX="226.0" layoutY="66.0">

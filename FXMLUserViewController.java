@@ -266,7 +266,7 @@ public class FXMLUserViewController implements Initializable {
         
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<FriendList, String>("FirstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<FriendList, String>("LastName"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<FriendList, String>("Last Login"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<FriendList, String>("LastLogin"));
         
         friendsTable.setItems(getPeople(currentUser.getUsername()));
         friendsTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
